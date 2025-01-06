@@ -126,7 +126,7 @@ impl ColliderCouplingSet {
         &'a mut self,
         colliders: &'a ColliderSet,
         bodies: &'a mut RigidBodySet,
-    ) -> ColliderCouplingManager {
+    ) -> ColliderCouplingManager<'a> {
         ColliderCouplingManager {
             coupling: self,
             colliders,

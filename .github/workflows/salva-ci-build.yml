@@ -2,17 +2,17 @@ name: Salva CI build
 
 on:
   push:
-    branches: [ master ]
-  pull_request: 
-    branches: [ master ]
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
   check-fmt:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Check formatting
-      run: cargo fmt -- --check
+      - uses: actions/checkout@v2
+      - name: Check formatting
+        run: cargo fmt -- --check
   build-native:
     runs-on: ubuntu-latest
     env:
@@ -22,10 +22,10 @@ jobs:
         package: [salva2d, salva3d]
         feature: [default, parallel, sampling, parry, rapier, rapier-testbed]
     steps:
-    - uses: actions/checkout@v2
-    - run: sudo apt-get install -y cmake libxcb-composite0-dev
-    - name: build ${{ matrix.package }} --features ${{ matrix.feature }}
-      run: cargo build --verbose -p ${{ matrix.package }} --features ${{ matrix.feature }}
+      - uses: actions/checkout@v2
+      - run: sudo apt-get install -y cmake libxcb-composite0-dev
+      - name: build ${{ matrix.package }} --features ${{ matrix.feature }}
+        run: cargo build --verbose -p ${{ matrix.package }} --features ${{ matrix.feature }}
   all-features-native:
     runs-on: ubuntu-latest
     env:
@@ -34,10 +34,10 @@ jobs:
       matrix:
         package: [salva2d, salva3d]
     steps:
-    - uses: actions/checkout@v2
-    - run: sudo apt-get install -y cmake
-    - name: build ${{ matrix.package }} --all-features
-      run: cargo build --verbose -p ${{ matrix.package }} --all-features
+      - uses: actions/checkout@v2
+      - run: sudo apt-get install -y cmake
+      - name: build ${{ matrix.package }} --all-features
+        run: cargo build --verbose -p ${{ matrix.package }} --all-features
   test-native:
     runs-on: ubuntu-latest
     env:
@@ -46,10 +46,10 @@ jobs:
       matrix:
         package: [salva2d, salva3d]
     steps:
-    - uses: actions/checkout@v2
-    - run: sudo apt-get install -y cmake
-    - name: test ${{ matrix.package }}
-      run: cargo test --verbose -p ${{ matrix.package }}
+      - uses: actions/checkout@v2
+      - run: sudo apt-get install -y cmake
+      - name: test ${{ matrix.package }}
+        run: cargo test --verbose -p ${{ matrix.package }}
   examples-native:
     runs-on: ubuntu-latest
     env:
@@ -59,22 +59,22 @@ jobs:
         package: [examples2d, examples3d]
         feature: [default, parallel]
     steps:
-    - uses: actions/checkout@v2
-    - run: sudo apt-get install -y cmake libxcb-composite0-dev libx11-dev libasound2-dev libudev-dev
-    - name: build ${{ matrix.package }} --features ${{ matrix.feature }}
-      run: cargo build --verbose -p ${{ matrix.package }} --features ${{ matrix.feature }}
+      - uses: actions/checkout@v2
+      - run: sudo apt-get install -y cmake libxcb-composite0-dev libx11-dev libasound2-dev libudev-dev
+      - name: build ${{ matrix.package }} --features ${{ matrix.feature }}
+        run: cargo build --verbose -p ${{ matrix.package }} --features ${{ matrix.feature }}
   build-wasm:
     runs-on: ubuntu-latest
     env:
       RUSTFLAGS: -D warnings
     strategy:
       matrix:
-          package: [salva2d, salva3d]
+        package: [salva2d, salva3d]
     steps:
       - uses: actions/checkout@v2
       - run: rustup target add wasm32-unknown-unknown
       - name: wasm build ${{ matrix.package }}
-        run: cargo build -p ${{ matrix.package }}  --verbose --features wasm-bindgen --target wasm32-unknown-unknown;
+        run: cargo build -p ${{ matrix.package }}  --verbose --target wasm32-unknown-unknown;
   # build-wasm-emscripten:
   #   runs-on: ubuntu-latest
   #   env:

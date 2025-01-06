@@ -22,17 +22,17 @@ salva3d = { path = "./build/salva3d" }
 #rapier_testbed2d = { git = "https://github.com/dimforge/rapier", branch = "split_geom"  }
 #rapier_testbed3d = { git = "https://github.com/dimforge/rapier", branch = "split_geom"  }
 
-#rapier2d = { git = "https://github.com/dimforge/rapier" }
-#rapier3d = { git = "https://github.com/dimforge/rapier" }
-#rapier_testbed2d = { git = "https://github.com/dimforge/rapier" }
-#rapier_testbed3d = { git = "https://github.com/dimforge/rapier" }
+rapier2d = { git = "https://github.com/dimforge/rapier", rev = "cf77b5bf574f8363794f979510deec5c08e58401" }
+rapier3d = { git = "https://github.com/dimforge/rapier", rev = "cf77b5bf574f8363794f979510deec5c08e58401" }
+rapier_testbed2d = { git = "https://github.com/dimforge/rapier", rev = "cf77b5bf574f8363794f979510deec5c08e58401" }
+rapier_testbed3d = { git = "https://github.com/dimforge/rapier", rev = "cf77b5bf574f8363794f979510deec5c08e58401" }
 
 # rapier2d = { git = "https://github.com/dimforge/rapier", rev = "3b0d256" }
 # rapier3d = { git = "https://github.com/dimforge/rapier", rev = "3b0d256" }
 # rapier_testbed2d = { git = "https://github.com/dimforge/rapier", rev = "3b0d256" }
 # rapier_testbed3d = { git = "https://github.com/dimforge/rapier", rev = "3b0d256" }
 
-# rapier2d = { path = "../rapier/build/rapier2d" }
-# rapier3d = { path = "../rapier/build/rapier3d" }
-# rapier_testbed2d = { path = "../rapier/build/rapier_testbed2d" }
-# rapier_testbed3d = { path = "../rapier/build/rapier_testbed3d" }
+# rapier2d = { path = "../rapier/crates/rapier2d" }
+# rapier3d = { path = "../rapier/crates/rapier3d" }
+# rapier_testbed2d = { path = "../rapier/crates/rapier_testbed2d" }
+# rapier_testbed3d = { path = "../rapier/crates/rapier_testbed3d" }
